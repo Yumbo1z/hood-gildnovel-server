@@ -13,6 +13,12 @@ app.get('/api/health', (req, res) => {
 	res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
+// Simple players endpoint (mock data). Replace with real data later.
+app.get('/api/players', (req, res) => {
+	// Example shape: { online: 3, max: 50 }
+	res.json({ online: 0, max: 20 });
+});
+
 app.listen(PORT, () => {
 	console.log(`Server listening on http://localhost:${PORT}`);
 });

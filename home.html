@@ -3,33 +3,171 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Hood Gild Novel — Home</title>
+		<title>Hood Gild Novel — Minecraft Server</title>
+		<meta name="description" content="Hood Gild Novel — Minecraft server homepage" />
 		<style>
-			body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial; line-height: 1.6; margin: 2rem; color: #111 }
-			header { margin-bottom: 1.5rem }
-			.card { border: 1px solid #eee; padding: 1rem; border-radius: 8px; max-width: 700px }
-			a { color: #0b66ff }
+			:root{
+				--bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#38bdf8; --accent-2:#7c3aed; --glass: rgba(255,255,255,0.04);
+			}
+			html,body{height:100%;}
+			body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial; background:linear-gradient(180deg,#071022 0%, #061226 100%); color:#e6eef6; -webkit-font-smoothing:antialiased;}
+			.container{max-width:1100px;margin:2rem auto;padding:1rem}
+			header{display:flex;align-items:center;gap:1rem}
+			.logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#021124;font-size:22px}
+			h1{margin:0;font-size:1.6rem}
+			p.lead{color:var(--muted);margin:0.25rem 0 0}
+
+			.grid{display:grid;grid-template-columns: 1fr 340px;gap:1rem;margin-top:1.25rem}
+			.card{background:var(--card);border-radius:12px;padding:1rem;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+
+			.hero{display:flex;flex-direction:column;gap:0.75rem}
+			.status{display:flex;align-items:center;gap:0.5rem}
+			.dot{width:12px;height:12px;border-radius:999px;background:#9ca3af;box-shadow:0 0 8px rgba(0,0,0,0.6)}
+			.dot.online{background:#22c55e;box-shadow:0 0 12px rgba(34,197,94,0.3)}
+			.ip{font-family:monospace;background:var(--glass);padding:0.4rem 0.6rem;border-radius:8px;color:#dff6ff}
+			.btn{display:inline-block;padding:0.6rem 0.9rem;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021124;font-weight:700;text-decoration:none}
+
+			ul.features{list-style:none;padding:0;margin:0;display:flex;gap:0.6rem;flex-wrap:wrap}
+			ul.features li{background:rgba(255,255,255,0.02);padding:0.4rem 0.6rem;border-radius:8px;color:var(--muted);font-size:0.9rem}
+
+			.rules li{margin-bottom:0.5rem}
+			footer{margin-top:1.5rem;color:var(--muted);font-size:0.9rem}
+
+			@media (max-width:900px){
+				.grid{grid-template-columns:1fr;}
+			}
 		</style>
 	</head>
 	<body>
-		<header>
-			<h1>Hood Gild Novel — Server</h1>
-			<p>Minimal static homepage for the project. The server serves this file from <code>index.js</code>.</p>
-		</header>
+		<div class="container">
+			<header>
+				<div class="logo">HG</div>
+				<div>
+					<h1>Hood Gild Novel</h1>
+					<p class="lead">A friendly Minecraft survival server — custom economy, town builds, and events.</p>
+				</div>
+			</header>
 
-		<main class="card">
-			<h2>Quick links</h2>
-			<ul>
-				<li><a href="/">Home (this page)</a></li>
-				<li><a href="/api/health">API health (JSON)</a></li>
-			</ul>
+			<div class="grid">
+				<section class="card hero">
+					<div style="display:flex;justify-content:space-between;align-items:center">
+						<div>
+							<div class="status"><div id="status-dot" class="dot"></div><strong id="status-text">Checking...</strong></div>
+							<div style="margin-top:0.6rem;color:var(--muted);font-size:0.92rem">MOTD: <em>Welcome to Hood Gild Novel — build, explore, and roleplay.</em></div>
+						</div>
+						<div style="text-align:right">
+							<div style="margin-bottom:0.5rem">Server IP</div>
+							<div class="ip" id="server-ip">play.hoodgild.example:25565</div>
+							<div style="margin-top:0.6rem;display:flex;gap:0.5rem;justify-content:flex-end">
+								<button class="btn" id="copy-btn">Copy IP</button>
+								<a class="btn" href="minecraft://play.hoodgild.example:25565">Join</a>
+							</div>
+						</div>
+					</div>
 
-			<h3>Next steps</h3>
-			<ol>
-				<li>Edit <code>index.js</code> to add routes and APIs.</li>
-				<li>Install dependencies with <code>npm install</code>.</li>
-				<li>Start the server with <code>node index.js</code> or <code>npm start</code>.</li>
-			</ol>
-		</main>
+					<div style="margin-top:1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+						<div>
+							<div style="font-size:0.85rem;color:var(--muted)">Players</div>
+							<div id="players-count" style="font-weight:700;font-size:1.25rem">—</div>
+						</div>
+						<div>
+							<div style="font-size:0.85rem;color:var(--muted)">Uptime</div>
+							<div id="uptime" style="font-weight:700;font-size:1.25rem">—</div>
+						</div>
+					</div>
+
+					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
+
+					<h3 style="margin:0 0 0.5rem">Features</h3>
+					<ul class="features">
+						<li>Survival</li>
+						<li>Economy & Shops</li>
+						<li>Events & Parkour</li>
+						<li>Active staff</li>
+						<li>Discord-linked</li>
+					</ul>
+
+					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
+
+					<h3 style="margin:0 0 0.6rem">News</h3>
+					<div style="color:var(--muted);font-size:0.95rem">No news yet. Use this area to post server updates, events, and patch notes.</div>
+				</section>
+
+				<aside class="card">
+					<h3 style="margin-top:0">Server Rules</h3>
+					<ol class="rules" style="color:var(--muted);padding-left:1rem">
+						<li>No griefing — respect other builds.</li>
+						<li>No cheating or using banned mods.</li>
+						<li>Be respectful in chat and on Discord.</li>
+						<li>Follow staff instructions.</li>
+					</ol>
+
+					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
+
+					<h4>Join & Links</h4>
+					<p style="margin:0.4rem 0;color:var(--muted)">IP: <span class="ip">play.hoodgild.example:25565</span></p>
+					<p style="margin:0.4rem 0"><a href="#" id="discord-link" style="color:var(--accent)">Discord Invite</a></p>
+					<p style="margin:0.4rem 0;color:var(--muted)">Vote links, store, and donor info can go here.</p>
+
+					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
+
+					<h4>Admin</h4>
+					<p style="color:var(--muted);margin:0.2rem 0">Server API: <a href="/api/health" style="color:var(--accent)">/api/health</a></p>
+					<p style="color:var(--muted);margin:0.2rem 0">Want player count in the page? I can add an endpoint that returns players. Ask me to add it.</p>
+				</aside>
+			</div>
+
+			<footer>
+				<div>© Hood Gild Novel — <span style="color:var(--muted)">Make sure to replace placeholders (IP, links) with real values.</span></div>
+			</footer>
+		</div>
+
+		<script>
+			// Basic polling of /api/health to update status. Gracefully handles missing endpoint.
+			async function checkHealth(){
+				try{
+					const r = await fetch('/api/health', {cache: 'no-store'});
+					if(!r.ok) throw new Error('non-200');
+					const j = await r.json();
+					document.getElementById('status-dot').classList.add('online');
+					document.getElementById('status-text').textContent = 'Online';
+					document.getElementById('uptime').textContent = new Date(j.time).toLocaleString();
+				}catch(e){
+					document.getElementById('status-dot').classList.remove('online');
+					document.getElementById('status-text').textContent = 'Offline';
+					document.getElementById('uptime').textContent = '—';
+				}
+			}
+
+			// Attempt to fetch /api/players if you add it later. If not present, show —
+			async function updatePlayers(){
+				try{
+					const r = await fetch('/api/players', {cache:'no-store'});
+					if(!r.ok) throw new Error('no players endpoint');
+					const j = await r.json();
+					// Expect shape: { online: 5 }
+					document.getElementById('players-count').textContent = j.online ?? '—';
+				}catch(e){
+					document.getElementById('players-count').textContent = '—';
+				}
+			}
+
+			document.getElementById('copy-btn').addEventListener('click', async () => {
+				const ip = document.getElementById('server-ip').textContent.trim();
+				try{
+					await navigator.clipboard.writeText(ip);
+					document.getElementById('copy-btn').textContent = 'Copied!';
+					setTimeout(()=> document.getElementById('copy-btn').textContent = 'Copy IP', 1500);
+				}catch(e){
+					alert('Copy failed — your browser may block clipboard access.');
+				}
+			});
+
+			// initial check
+			checkHealth(); updatePlayers();
+			// poll every 10s
+			setInterval(checkHealth, 10000);
+			setInterval(updatePlayers, 15000);
+		</script>
 	</body>
 </html>
