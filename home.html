@@ -1,173 +1,333 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Hood Gild Novel — Minecraft Server</title>
-		<meta name="description" content="Hood Gild Novel — Minecraft server homepage" />
-		<style>
-			:root{
-				--bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#38bdf8; --accent-2:#7c3aed; --glass: rgba(255,255,255,0.04);
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Hood Gild Novel — Minecraft Server</title>
+	<meta name="description" content="Hood Gild Novel — Minecraft server homepage" />
+	<style>
+		:root {
+			--bg: #0f1724;
+			--card: #0b1220;
+			--muted: #9aa4b2;
+			--accent: #38bdf8;
+			--accent-2: #7c3aed;
+			--glass: rgba(255, 255, 255, 0.04);
+		}
+
+		html,
+		body {
+			height: 100%
+		}
+
+		body {
+			margin: 0;
+			font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial;
+			background: #071022;
+			color: #eef6ff
+		}
+
+		/* HERO */
+		.hero-wrap {
+			height: 75vh;
+			min-height: 420px;
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			position: relative;
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+
+		/* default placeholder image (replace URL or set inline style to change) */
+		.hero-wrap {
+			background-image: linear-gradient(rgba(2, 6, 23, 0.35), rgba(2, 6, 23, 0.55)), url('https://images.unsplash.com/photo-1543937046-3b1f2e2f9d09?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=2a1bf8a4f0a2b8b3c7c4f4b3b7b6c8d1');
+		}
+
+		/* bottom info panel overlay */
+		.hero-info {
+			width: 100%;
+			max-width: 1100px;
+			margin: 0 1rem 2rem;
+			padding: 18px;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+			border-radius: 12px;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			backdrop-filter: blur(6px);
+			box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
+			border: 1px solid rgba(255, 255, 255, 0.04)
+		}
+
+		.logo {
+			flex: 0 0 92px;
+			height: 92px;
+			border-radius: 12px;
+			background: linear-gradient(135deg, var(--accent), var(--accent-2));
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 800;
+			color: #021124;
+			font-size: 28px
+		}
+
+		.meta {
+			flex: 1
+		}
+
+		.meta h1 {
+			margin: 0;
+			font-size: 1.4rem
+		}
+
+		.meta p {
+			margin: 6px 0 0;
+			color: var(--muted)
+		}
+
+		.right {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			gap: 8px
+		}
+
+		.ip {
+			font-family: monospace;
+			background: rgba(255, 255, 255, 0.03);
+			padding: 6px 10px;
+			border-radius: 8px;
+			color: #dff6ff
+		}
+
+		.controls {
+			display: flex;
+			gap: 0.5rem;
+			margin-top: 4px
+		}
+
+		.btn {
+			padding: 8px 12px;
+			border-radius: 10px;
+			background: linear-gradient(90deg, var(--accent), var(--accent-2));
+			color: #021124;
+			font-weight: 700;
+			border: none;
+			cursor: pointer
+		}
+
+		/* page content below hero */
+		.content {
+			max-width: 1100px;
+			margin: 2rem auto;
+			padding: 0 1rem;
+			display: grid;
+			grid-template-columns: 1fr 320px;
+			gap: 1rem
+		}
+
+		.card {
+			background: var(--card);
+			border-radius: 12px;
+			padding: 16px;
+			box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+			border: 1px solid rgba(255, 255, 255, 0.03)
+		}
+
+		ul.features {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			gap: 0.6rem;
+			flex-wrap: wrap
+		}
+
+		ul.features li {
+			background: rgba(255, 255, 255, 0.02);
+			padding: 0.4rem 0.6rem;
+			border-radius: 8px;
+			color: var(--muted);
+			font-size: 0.9rem
+		}
+
+		@media (max-width:900px) {
+			.hero-wrap {
+				height: 56vh
 			}
-			html,body{height:100%;}
-			body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial; background:linear-gradient(180deg,#071022 0%, #061226 100%); color:#e6eef6; -webkit-font-smoothing:antialiased;}
-			.container{max-width:1100px;margin:2rem auto;padding:1rem}
-			header{display:flex;align-items:center;gap:1rem}
-			.logo{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#021124;font-size:22px}
-			h1{margin:0;font-size:1.6rem}
-			p.lead{color:var(--muted);margin:0.25rem 0 0}
 
-			.grid{display:grid;grid-template-columns: 1fr 340px;gap:1rem;margin-top:1.25rem}
-			.card{background:var(--card);border-radius:12px;padding:1rem;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
-
-			.hero{display:flex;flex-direction:column;gap:0.75rem}
-			.status{display:flex;align-items:center;gap:0.5rem}
-			.dot{width:12px;height:12px;border-radius:999px;background:#9ca3af;box-shadow:0 0 8px rgba(0,0,0,0.6)}
-			.dot.online{background:#22c55e;box-shadow:0 0 12px rgba(34,197,94,0.3)}
-			.ip{font-family:monospace;background:var(--glass);padding:0.4rem 0.6rem;border-radius:8px;color:#dff6ff}
-			.btn{display:inline-block;padding:0.6rem 0.9rem;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021124;font-weight:700;text-decoration:none}
-
-			ul.features{list-style:none;padding:0;margin:0;display:flex;gap:0.6rem;flex-wrap:wrap}
-			ul.features li{background:rgba(255,255,255,0.02);padding:0.4rem 0.6rem;border-radius:8px;color:var(--muted);font-size:0.9rem}
-
-			.rules li{margin-bottom:0.5rem}
-			footer{margin-top:1.5rem;color:var(--muted);font-size:0.9rem}
-
-			@media (max-width:900px){
-				.grid{grid-template-columns:1fr;}
+			.hero-info {
+				flex-direction: column;
+				align-items: flex-start
 			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<header>
-				<div class="logo">HG</div>
-				<div>
-					<h1>Hood Gild Novel</h1>
-					<p class="lead">A friendly Minecraft survival server — custom economy, town builds, and events.</p>
-				</div>
-			</header>
 
-			<div class="grid">
-				<section class="card hero">
-					<div style="display:flex;justify-content:space-between;align-items:center">
-						<div>
-							<div class="status"><div id="status-dot" class="dot"></div><strong id="status-text">Checking...</strong></div>
-							<div style="margin-top:0.6rem;color:var(--muted);font-size:0.92rem">MOTD: <em>Welcome to Hood Gild Novel — build, explore, and roleplay.</em></div>
-						</div>
-						<div style="text-align:right">
-							<div style="margin-bottom:0.5rem">Server IP</div>
-							<div class="ip" id="server-ip">play.hoodgild.example:25565</div>
-							<div style="margin-top:0.6rem;display:flex;gap:0.5rem;justify-content:flex-end">
-								<button class="btn" id="copy-btn">Copy IP</button>
-								<a class="btn" href="minecraft://play.hoodgild.example:25565">Join</a>
-							</div>
-						</div>
-					</div>
+			.right {
+				align-items: flex-start
+			}
 
-					<div style="margin-top:1rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-						<div>
-							<div style="font-size:0.85rem;color:var(--muted)">Players</div>
-							<div id="players-count" style="font-weight:700;font-size:1.25rem">—</div>
-						</div>
-						<div>
-							<div style="font-size:0.85rem;color:var(--muted)">Uptime</div>
-							<div id="uptime" style="font-weight:700;font-size:1.25rem">—</div>
-						</div>
-					</div>
+			.content {
+				grid-template-columns: 1fr
+			}
+		}
 
-					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
+		/* Simple footer */
+		.simple-footer {
+			max-width: 1100px;
+			margin: 2rem auto;
+			padding: 12px;
+			text-align: center;
+			color: var(--muted);
+			font-size: 0.95rem
+		}
+	</style>
+</head>
 
-					<h3 style="margin:0 0 0.5rem">Features</h3>
-					<ul class="features">
-						<li>Survival</li>
-						<li>Economy & Shops</li>
-						<li>Events & Parkour</li>
-						<li>Active staff</li>
-						<li>Discord-linked</li>
-					</ul>
+<body>
 
-					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
-
-					<h3 style="margin:0 0 0.6rem">News</h3>
-					<div style="color:var(--muted);font-size:0.95rem">No news yet. Use this area to post server updates, events, and patch notes.</div>
-				</section>
-
-				<aside class="card">
-					<h3 style="margin-top:0">Server Rules</h3>
-					<ol class="rules" style="color:var(--muted);padding-left:1rem">
-						<li>No griefing — respect other builds.</li>
-						<li>No cheating or using banned mods.</li>
-						<li>Be respectful in chat and on Discord.</li>
-						<li>Follow staff instructions.</li>
-					</ol>
-
-					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
-
-					<h4>Join & Links</h4>
-					<p style="margin:0.4rem 0;color:var(--muted)">IP: <span class="ip">play.hoodgild.example:25565</span></p>
-					<p style="margin:0.4rem 0"><a href="#" id="discord-link" style="color:var(--accent)">Discord Invite</a></p>
-					<p style="margin:0.4rem 0;color:var(--muted)">Vote links, store, and donor info can go here.</p>
-
-					<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
-
-					<h4>Admin</h4>
-					<p style="color:var(--muted);margin:0.2rem 0">Server API: <a href="/api/health" style="color:var(--accent)">/api/health</a></p>
-					<p style="color:var(--muted);margin:0.2rem 0">Want player count in the page? I can add an endpoint that returns players. Ask me to add it.</p>
-				</aside>
+	<div class="hero-wrap" role="img" aria-label="Minecraft landscape hero image">
+		<div class="hero-info" id="hero-info">
+			<div class="logo">HG</div>
+			<div class="meta">
+				<h1>Hood Gild Novel</h1>
+				<p class="lead">Roleplay • Factions • Politics — join governments, kingdoms, or gangs and shape the
+					realm.</p>
 			</div>
 
-			<footer>
-				<div>© Hood Gild Novel — <span style="color:var(--muted)">Make sure to replace placeholders (IP, links) with real values.</span></div>
-			</footer>
+			<div class="right">
+				<div style="font-size:0.85rem;color:var(--muted)">Server IP</div>
+				<div class="ip" id="server-ip">play.hoodgild.example:25565</div>
+				<div class="controls">
+					<button class="btn" id="copy-btn">Copy IP</button>
+					<a class="btn" href="minecraft://play.hoodgild.example:25565">Join</a>
+				</div>
+			</div>
 		</div>
+	</div>
 
-		<script>
-			// Basic polling of /api/health to update status. Gracefully handles missing endpoint.
-			async function checkHealth(){
-				try{
-					const r = await fetch('/api/health', {cache: 'no-store'});
-					if(!r.ok) throw new Error('non-200');
-					const j = await r.json();
-					document.getElementById('status-dot').classList.add('online');
-					document.getElementById('status-text').textContent = 'Online';
-					document.getElementById('uptime').textContent = new Date(j.time).toLocaleString();
-				}catch(e){
-					document.getElementById('status-dot').classList.remove('online');
-					document.getElementById('status-text').textContent = 'Offline';
-					document.getElementById('uptime').textContent = '—';
-				}
+	<main class="content">
+		<section class="card">
+			<h3>Overview</h3>
+			<p style="color:var(--muted)">Welcome to Hood Gild Novel — a roleplay server focused on governments,
+				kingdoms, and gangs. This server is designed to simulate street life as well as government and military
+				power. Form factions, run politics, hold events, and engage in conflict. PvP is allowed
+				throughout the world, but every region follows its own in-game laws — roleplay should respect the
+				country's laws where you act. Griefing and destruction are prohibited unless explicitly allowed by local
+				law or in specially designated zones.</p>
+
+			<h4 style="margin-top:12px">Features</h4>
+			<ul class="features">
+				<li>Roleplay governments</li>
+				<li>Kingdoms & Gang factions</li>
+				<li>Economy & trade</li>
+				<li>Political events & roleplay scenarios</li>
+				<li>PvP allowed (subject to local in-game laws)</li>
+			</ul>
+
+			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+
+			<h4 style="margin-top:12px">Mods & Bedrock</h4>
+			<div style="display:flex;gap:1rem;flex-wrap:wrap">
+				<div style="flex:1;min-width:220px">
+					<div style="font-weight:700;margin-bottom:6px">Server plugins / mods</div>
+					<ul style="color:var(--muted);margin:0;padding-left:1rem">
+						<li>Town / land-claim plugin</li>
+						<li>Economy & shops</li>
+						<li>Roleplay / jobs plugin</li>
+						<li>NPCs & events</li>
+						<li>Anti-cheat & protection</li>
+					</ul>
+					<div style="margin-top:8px;color:var(--muted);font-size:0.92rem">Replace the list above with real plugin names used on your server (for example: griefprevention, essentials, shop plugin, custom-roleplay plugin).</div>
+				</div>
+
+				<div style="flex:0 0 280px;min-width:220px">
+					<div style="font-weight:700;margin-bottom:6px">Bedrock (mobile/console) access</div>
+					<div style="color:var(--muted)">We support Bedrock players via a Bedrock-Java proxy (e.g., Geyser + Floodgate). Connect details:</div>
+					<ul style="color:var(--muted);margin:8px 0 0 1rem;padding:0">
+						<li>Java address: <strong>play.hoodgild.example:25565</strong></li>
+						<li>Bedrock address: <strong>play.hoodgild.example:19132</strong> (UDP)</li>
+					</ul>
+					<div style="margin-top:8px;color:var(--muted);font-size:0.92rem">If you are Bedrock — use the Bedrock address and make sure you're using the correct port. Ask staff if you have trouble connecting.</div>
+				</div>
+			</div>
+
+			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+
+			<h4>News</h4>
+			<div style="color:var(--muted)">No news yet. Use this area to post server updates, events, and patch notes.
+			</div>
+		</section>
+
+		<aside class="card">
+			<h3 style="margin-top:0">Server Rules</h3>
+			<ol style="color:var(--muted);padding-left:1rem">
+				<li>No griefing or arbitrary destruction of builds — respect other players' creations. PvP is allowed,
+					but actions are governed by the laws of the country/region you are in; griefing is only permitted
+					where local law explicitly allows it (for example in designated lawless zones).</li>
+				<li>No cheating, exploits, or banned mods.</li>
+				<li>Keep roleplay in-character where appropriate and be respectful in chat and on Discord.</li>
+				<li>Follow staff instructions and server laws; abuse of roleplay (e.g., meta-gaming) may be moderated.
+				</li>
+			</ol>
+
+			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:1rem 0">
+
+			<h4>Links</h4>
+			<p style="margin:0.4rem 0;color:var(--muted)">IP: <span class="ip">play.hoodgild.example:25565</span></p>
+			<p style="margin:0.4rem 0"><a href="#" id="discord-link" style="color:var(--accent)">Discord Invite</a></p>
+		</aside>
+	</main>
+
+	<footer class="simple-footer">© Hood Gild Novel — All rights reserved.</footer>
+
+	<script>
+		// Basic polling of /api/health to update status. Gracefully handles missing endpoint.
+		async function checkHealth() {
+			try {
+				const r = await fetch('/api/health', { cache: 'no-store' });
+				if (!r.ok) throw new Error('non-200');
+				const j = await r.json();
+				document.getElementById('status-text')?.textContent = 'Online';
+				document.getElementById('uptime')?.textContent = new Date(j.time).toLocaleString();
+			} catch (e) {
+				document.getElementById('status-text')?.textContent = 'Offline';
+				document.getElementById('uptime')?.textContent = '—';
 			}
+		}
 
-			// Attempt to fetch /api/players if you add it later. If not present, show —
-			async function updatePlayers(){
-				try{
-					const r = await fetch('/api/players', {cache:'no-store'});
-					if(!r.ok) throw new Error('no players endpoint');
-					const j = await r.json();
-					// Expect shape: { online: 5 }
-					document.getElementById('players-count').textContent = j.online ?? '—';
-				}catch(e){
-					document.getElementById('players-count').textContent = '—';
-				}
+		// Attempt to fetch /api/players if you add it later. If not present, show —
+		async function updatePlayers() {
+			try {
+				const r = await fetch('/api/players', { cache: 'no-store' });
+				if (!r.ok) throw new Error('no players endpoint');
+				const j = await r.json();
+				const online = j.online ?? '—';
+				document.getElementById('players-count')?.textContent = online;
+			} catch (e) {
+				document.getElementById('players-count')?.textContent = '—';
 			}
+		}
 
-			document.getElementById('copy-btn').addEventListener('click', async () => {
-				const ip = document.getElementById('server-ip').textContent.trim();
-				try{
-					await navigator.clipboard.writeText(ip);
-					document.getElementById('copy-btn').textContent = 'Copied!';
-					setTimeout(()=> document.getElementById('copy-btn').textContent = 'Copy IP', 1500);
-				}catch(e){
-					alert('Copy failed — your browser may block clipboard access.');
-				}
-			});
+		document.getElementById('copy-btn').addEventListener('click', async () => {
+			const ip = document.getElementById('server-ip').textContent.trim();
+			try {
+				await navigator.clipboard.writeText(ip);
+				const b = document.getElementById('copy-btn');
+				b.textContent = 'Copied!';
+				setTimeout(() => b.textContent = 'Copy IP', 1500);
+			} catch (e) {
+				alert('Copy failed — your browser may block clipboard access.');
+			}
+		});
 
-			// initial check
-			checkHealth(); updatePlayers();
-			// poll every 10s
-			setInterval(checkHealth, 10000);
-			setInterval(updatePlayers, 15000);
-		</script>
-	</body>
+		// initial check
+		checkHealth(); updatePlayers();
+		setInterval(checkHealth, 10000);
+		setInterval(updatePlayers, 15000);
+	</script>
+</body>
+
 </html>
