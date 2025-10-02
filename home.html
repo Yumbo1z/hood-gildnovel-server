@@ -275,6 +275,14 @@
 
 			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
 
+			<h4>Support / Donate</h4>
+			<div style="color:var(--muted);margin-bottom:8px">Help keep the server online — donations pay for hosting, plugins, and events. Thank you for any support.</div>
+			<div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
+				<button class="btn donate-btn" onclick="window.open('https://ko-fi.com/yumbo1z', '_blank').focus();" title="Open Ko-fi">Donate via Ko-fi</button>
+			</div>
+
+			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+
 			<h4>News</h4>
 			<div style="color:var(--muted)">No news yet. Use this area to post server updates, events, and patch notes.
 			</div>
@@ -346,6 +354,24 @@
 		checkHealth(); updatePlayers();
 		setInterval(checkHealth, 10000);
 		setInterval(updatePlayers, 15000);
+
+		// Donate buttons: open link and copy to clipboard
+		document.querySelectorAll('.donate-btn').forEach(btn => {
+			btn.addEventListener('click', async (e) => {
+				const link = btn.getAttribute('data-link');
+				// open in new tab
+				window.open(link, '_blank', 'noopener');
+				// try to copy
+				try{
+					await navigator.clipboard.writeText(link);
+					const old = btn.textContent;
+					btn.textContent = 'Link copied!';
+					setTimeout(()=> btn.textContent = old, 1600);
+				}catch(err){
+					alert('Opened link in a new tab. Copy to clipboard failed.');
+				}
+			});
+		});
 	</script>
 </body>
 
