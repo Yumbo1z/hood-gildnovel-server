@@ -1,24 +1,15 @@
-// Minimal Express server to serve static files and a tiny health API
-const express = require('express');
-const path = require('path');
-
+const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Serve static files from repo root (so home.html is accessible at /)
-app.use(express.static(path.join(__dirname)));
+const dir = (text) => `${__dirname}/html/${text}.html`;
+const link = (input) => `https://gildnovel.com/${input}`;
 
-// Simple JSON health endpoint
-app.get('/api/health', (req, res) => {
-	res.json({ status: 'ok', time: new Date().toISOString() });
+app.get("/", (_, res) => res.redirect(dir("home")));
+
+app.use((_, res) => res.status(404).redirect("/alert"));
+
+app.listen(process.env.PORT || 80, () => {
+  console.log("Server Started");
 });
 
-// Simple players endpoint (mock data). Replace with real data later.
-app.get('/api/players', (req, res) => {
-	// Example shape: { online: 3, max: 50 }
-	res.json({ online: 0, max: 20 });
-});
-
-app.listen(PORT, () => {
-	console.log(`Server listening on http://localhost:${PORT}`);
-});
+console.log(__dirname);
