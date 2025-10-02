@@ -4,8 +4,24 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Hood Gild Novel — Minecraft Server</title>
-	<meta name="description" content="Hood Gild Novel — Minecraft server homepage" />
+
+	<title>Gilden Streets</title>
+	<link rel="icon" type="icon" href="/public/icon.png" />
+
+	<meta property="og:title" content="Gilden Streets" />
+	<meta property="og:description" content="Welcome to Hood Gild Novel — a roleplay server focused on governments,
+				kingdoms, and gangs. This server is designed to simulate street life as well as government and military
+				power. Form factions, run politics, hold events, and engage in conflict. PvP is allowed
+				throughout the world, but every region follows its own in-game laws — roleplay should respect the
+				country's laws where you act. Griefing and destruction are prohibited unless explicitly allowed by local
+				law or in specially designated zones." />
+	<meta property="og:image" content="https://i.imgur.com/qNUvrc2.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="600" />
+	<meta property="og:type" content="website" />
+
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2917612762722630"
+		crossorigin="anonymous"></script>
 	<style>
 		:root {
 			--bg: #000000;
@@ -82,6 +98,14 @@
 			font-weight: 800;
 			color: var(--text-dark);
 			font-size: 28px
+		}
+
+		.logo img {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+			border-radius: 10px;
+			object-fit: cover
 		}
 
 		.meta {
@@ -199,9 +223,9 @@
 
 	<div class="hero-wrap" role="img" aria-label="Minecraft landscape hero image">
 		<div class="hero-info" id="hero-info">
-			<div class="logo">HG</div>
+			<div class="logo"><img src="https://i.imgur.com/qNUvrc2.png" alt="Hood Gild Novel logo"></div>
 			<div class="meta">
-				<h1>Hood Gild Novel</h1>
+				<h1>Gilden Streets</h1>
 				<p class="lead">Roleplay • Factions • Politics — join governments, kingdoms, or gangs and shape the
 					realm.</p>
 			</div>
@@ -276,9 +300,11 @@
 			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
 
 			<h4>Support / Donate</h4>
-			<div style="color:var(--muted);margin-bottom:8px">Help keep the server online — donations pay for hosting, plugins, and events. Thank you for any support.</div>
+			<div style="color:var(--muted);margin-bottom:8px">Help keep the server online — donations pay for hosting,
+				plugins, and events. Thank you for any support.</div>
 			<div style="display:flex;gap:0.6rem;flex-wrap:wrap;align-items:center">
-				<button class="btn donate-btn" onclick="window.open('https://ko-fi.com/yumbo1z', '_blank').focus();" title="Open Ko-fi">Donate via Ko-fi</button>
+				<button class="btn donate-btn" onclick="window.open('https://ko-fi.com/yumbo1z', '_blank').focus();"
+					title="Open Ko-fi">Donate via Ko-fi</button>
 			</div>
 
 			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
@@ -362,12 +388,12 @@
 				// open in new tab
 				window.open(link, '_blank', 'noopener');
 				// try to copy
-				try{
+				try {
 					await navigator.clipboard.writeText(link);
 					const old = btn.textContent;
 					btn.textContent = 'Link copied!';
-					setTimeout(()=> btn.textContent = old, 1600);
-				}catch(err){
+					setTimeout(() => btn.textContent = old, 1600);
+				} catch (err) {
 					alert('Opened link in a new tab. Copy to clipboard failed.');
 				}
 			});
