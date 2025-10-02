@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-const dir = (text) => `${__dirname}/html/${text}.html`;
-const link = (input) => `https://gildnovel.com/${input}`;
+const dir = (text) => `${__dirname}/${text}.html`;
+const link = (input) => `https://hood-gildnovel-server-production.up.railway.app/${input}`;
 
 app.get("/", (_, res) => res.redirect(dir("home")));
 
