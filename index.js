@@ -5,6 +5,8 @@ const dir = (text) => `${__dirname}/html/${text}.html`;
 const link = (input) =>
   `https://hood-gildnovel-server-production.up.railway.app/${input}`;
 
+app.get("/ads.txt", (_, res) => res.sendFile(`${__dirname}/public/ads.txt`));
+
 app.get("/", async (_, res) => res.sendFile(dir("home")));
 
 app.use((_, res) => res.status(404).redirect("/alert"));
