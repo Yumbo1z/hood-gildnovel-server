@@ -8,18 +8,11 @@
 	<title>Gilden Streets</title>
 	<link rel="icon" type="icon" href="https://i.imgur.com/YSlQVQN.png" />
 
-	<meta property="og:title" content="Gilden Streets" />
-	<meta property="og:description" content="Welcome to Hood Gild Novel — a roleplay server focused on governments,
-				kingdoms, and gangs. This server is designed to simulate street life as well as government and military
-				power. Form factions, run politics, hold events, and engage in conflict. PvP is allowed
-				throughout the world, but every region follows its own in-game laws — roleplay should respect the
-				country's laws where you act. Griefing and destruction are prohibited unless explicitly allowed by local
-				law or in specially designated zones." />
-	<meta property="og:image" content="https://i.imgur.com/qNUvrc2.png" />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="600" />
-	<meta property="og:type" content="website" />
-
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gilden Streets">
+<meta name="twitter:description" content="Roleplay • Factions • Politics — join governments, kingdoms, or gangs and shape the realm.">
+<meta name="twitter:image" content="https://i.imgur.com/qNUvrc2.png">
+	
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2917612762722630"
 		crossorigin="anonymous"></script>
 	<style>
@@ -297,8 +290,6 @@
 						<li>Waystones</li>
 					</ul>
 				</div>
-
-
 			</div>
 
 			<hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
@@ -341,33 +332,6 @@
 	<footer class="simple-footer">© Hood Gild Novel — All rights reserved.</footer>
 
 	<script>
-		// Basic polling of /api/health to update status. Gracefully handles missing endpoint.
-		async function checkHealth() {
-			try {
-				const r = await fetch('/api/health', { cache: 'no-store' });
-				if (!r.ok) throw new Error('non-200');
-				const j = await r.json();
-				document.getElementById('status-text')?.textContent = 'Online';
-				document.getElementById('uptime')?.textContent = new Date(j.time).toLocaleString();
-			} catch (e) {
-				document.getElementById('status-text')?.textContent = 'Offline';
-				document.getElementById('uptime')?.textContent = '—';
-			}
-		}
-
-		// Attempt to fetch /api/players if you add it later. If not present, show —
-		async function updatePlayers() {
-			try {
-				const r = await fetch('/api/players', { cache: 'no-store' });
-				if (!r.ok) throw new Error('no players endpoint');
-				const j = await r.json();
-				const online = j.online ?? '—';
-				document.getElementById('players-count')?.textContent = online;
-			} catch (e) {
-				document.getElementById('players-count')?.textContent = '—';
-			}
-		}
-
 		document.getElementById('copy-btn').addEventListener('click', async () => {
 			const ip = document.getElementById('server-ip').textContent.trim();
 			try {
@@ -378,29 +342,6 @@
 			} catch (e) {
 				alert('Copy failed — your browser may block clipboard access.');
 			}
-		});
-
-		// initial check
-		checkHealth(); updatePlayers();
-		setInterval(checkHealth, 10000);
-		setInterval(updatePlayers, 15000);
-
-		// Donate buttons: open link and copy to clipboard
-		document.querySelectorAll('.donate-btn').forEach(btn => {
-			btn.addEventListener('click', async (e) => {
-				const link = btn.getAttribute('data-link');
-				// open in new tab
-				window.open(link, '_blank', 'noopener');
-				// try to copy
-				try {
-					await navigator.clipboard.writeText(link);
-					const old = btn.textContent;
-					btn.textContent = 'Link copied!';
-					setTimeout(() => btn.textContent = old, 1600);
-				} catch (err) {
-					alert('Opened link in a new tab. Copy to clipboard failed.');
-				}
-			});
 		});
 
 		// Download buttons (modpack / Forge)
