@@ -7,6 +7,9 @@ const link = (input) =>
 
 app.get("/ads.txt", (_, res) => res.sendFile(`${__dirname}/public/ads.txt`));
 
+app.get("/modpack.zip", (_, res) => res.sendFile(`${__dirname}/public/modpack.zip`));
+
+
 app.get("/", async (_, res) => res.sendFile(dir("home")));
 
 app.use((_, res) => res.status(404).redirect("/alert"));
