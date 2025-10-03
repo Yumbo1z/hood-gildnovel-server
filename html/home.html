@@ -8,11 +8,12 @@
 	<title>Gilden Streets</title>
 	<link rel="icon" type="icon" href="https://i.imgur.com/YSlQVQN.png" />
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gilden Streets">
-<meta name="twitter:description" content="Roleplay • Factions • Politics — join governments, kingdoms, or gangs and shape the realm.">
-<meta name="twitter:image" content="https://i.imgur.com/qNUvrc2.png">
-	
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Gilden Streets">
+	<meta name="twitter:description"
+		content="Roleplay • Factions • Politics — join governments, kingdoms, or gangs and shape the realm.">
+	<meta name="twitter:image" content="https://i.imgur.com/qNUvrc2.png">
+
 	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2917612762722630"
 		crossorigin="anonymous"></script>
 	<style>
@@ -228,7 +229,6 @@
 				<div class="ip" id="server-ip">54.39.36.1:25589</div>
 				<div class="controls">
 					<button class="btn" id="copy-btn">Copy IP</button>
-					<a class="btn" href="minecraft://54.39.36.1:25589">Join</a>
 				</div>
 			</div>
 		</div>
@@ -259,16 +259,24 @@
 				<!-- Java-only + client modpack -->
 				<div style="flex:0 0 320px;min-width:220px">
 					<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-						<span style="background:var(--accent);color:var(--text-dark);padding:6px 8px;border-radius:8px;font-weight:800">JAVA ONLY</span>
-						<div style="color:var(--muted);font-size:0.95rem;font-weight:700">Client-side Forge modpack</div>
+						<span
+							style="background:var(--accent);color:var(--text-dark);padding:6px 8px;border-radius:8px;font-weight:800">JAVA
+							ONLY</span>
+						<div style="color:var(--muted);font-size:0.95rem;font-weight:700">Client-side Forge modpack
+						</div>
 					</div>
-					<div style="color:var(--muted);margin-bottom:8px">This server requires a custom client modpack on Java Edition. Download the pack and install Forge for the matching Minecraft version.</div>
+					<div style="color:var(--muted);margin-bottom:8px">This server requires a custom client modpack on
+						Java Edition. Download the pack and install Forge for the matching Minecraft version.</div>
 					<div style="display:flex;gap:0.5rem;flex-wrap:wrap">
 						<button class="btn download-btn" data-link="/public/modpack.zip">Download modpack (zip)</button>
-						<button class="btn download-btn" data-link="https://files.minecraftforge.net/">Download Forge installer</button>
+						<button class="btn download-btn" data-link="https://files.minecraftforge.net/">Download Forge
+							installer</button>
 					</div>
 					<div style="margin-top:8px;color:var(--muted);font-size:0.92rem">
-						Steps: install the Forge installer for the server Minecraft version, run the installer to create a Forge profile, unzip the modpack and copy the contents into your <code>.minecraft</code> (or drop the <code>mods</code> folder into the Forge profile), then run Minecraft with the Forge profile.
+						Steps: install the Forge installer for the server Minecraft version, run the installer to create
+						a Forge profile, unzip the modpack and copy the contents into your <code>.minecraft</code> (or
+						drop the <code>mods</code> folder into the Forge profile), then run Minecraft with the Forge
+						profile.
 					</div>
 				</div>
 				<div style="flex:1;min-width:220px">
@@ -320,11 +328,12 @@
 
 			<h4>Links</h4>
 			<p style="margin:0.4rem 0;color:var(--muted)">IP: <span class="ip">54.39.36.1:25589</span></p>
-			<p style="margin:0.4rem 0"><a href="https://discord.gg/Eun9gPQu38" id="discord-link" style="color:var(--accent)">Discord Invite</a></p>
+			<p style="margin:0.4rem 0"><a href="https://discord.gg/Eun9gPQu38" id="discord-link"
+					style="color:var(--accent)">Discord Invite</a></p>
 		</aside>
 	</main>
 
-	<footer class="simple-footer">© Hood Gild Novel — All rights reserved.</footer>
+	<footer class="simple-footer">© Gilden Streets — All rights reserved.</footer>
 
 	<script>
 		document.getElementById('copy-btn').addEventListener('click', async () => {
@@ -344,12 +353,12 @@
 			btn.addEventListener('click', async () => {
 				const link = btn.getAttribute('data-link');
 				window.open(link, '_blank', 'noopener');
-				try{
+				try {
 					await navigator.clipboard.writeText(link);
 					const old = btn.textContent;
 					btn.textContent = 'Link copied!';
-					setTimeout(()=> btn.textContent = old, 1600);
-				}catch(err){
+					setTimeout(() => btn.textContent = old, 1600);
+				} catch (err) {
 					// ignore copy failures
 				}
 			});
